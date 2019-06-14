@@ -10,6 +10,14 @@ app.set('view engine', 'ejs');
 
 mongoose.connect('mongodb://localhost/restful_blog', {useNewUrlParser: true});
 
+const blogSchema = new mongoose.Schema ({
+    title: String,
+    image: String,
+    body: String,
+    created: {type: Date, default: Date.now}
+});
+
+const Blog = mongoose.model('Blog', blogSchema);
 
 //title
 
