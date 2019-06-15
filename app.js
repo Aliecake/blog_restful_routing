@@ -4,6 +4,7 @@ const express = require('express'),
     mongoose = require('mongoose');
 
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('view engine', 'ejs');
@@ -19,6 +20,16 @@ const blogSchema = new mongoose.Schema ({
 
 const Blog = mongoose.model('Blog', blogSchema);
 
+//RESTFUL ROUTES
+
+//index
+
+app.get('/', (req, res) => {
+    res.send('Landing Page')
+});
+app.get('/blogs', (req, res) => {
+    res.render('index')
+})
 //title
 
 //imageurl
@@ -28,4 +39,4 @@ const Blog = mongoose.model('Blog', blogSchema);
 //created
 app.listen(3000, () => {
     console.log('Listening on PORT 3000')
-})
+});
