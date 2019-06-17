@@ -13,23 +13,26 @@ mongoose.connect('mongodb://localhost/restful_blog', {useNewUrlParser: true});
 
 const blogSchema = new mongoose.Schema ({
     title: String,
-    image: String,
+    image: {type: String, default: 'https://via.placeholder.com/728x90.png?text=Placeholder+Photo'},
     body: String,
     created: {type: Date, default: Date.now}
 });
 
 const Blog = mongoose.model('Blog', blogSchema);
 
-//RESTFUL ROUTES
-
 //index
-
 app.get('/', (req, res) => {
-    res.send('Landing Page')
+    res.redirect('/blogs')
 });
 app.get('/blogs', (req, res) => {
-    res.render('index')
-})
+    Blog.find({}, (err, blogs) => {
+        if(err){
+            res.send('Error getting blog posts, press refresh or go back');
+        } else {
+            res.render('index', {blogs: blogs});
+        }
+    });
+});
 //title
 
 //imageurl
