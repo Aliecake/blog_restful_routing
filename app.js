@@ -40,11 +40,7 @@ app.get('/blogs/new', (req, res) => {
 });
 //create route
 app.post('/blogs', (req, res) => {
-    Blog.create({
-        title: req.body.blog.title,
-        image: req.body.blog.image,
-        body: req.body.blog.body
-    }, (err, blog) => {
+    Blog.create(req.body.blog, (err, blog) => {
         if(err){
             res.send(`There was an error posting, return to <a href="/blogs/new">Form</a> or <a href="/">Home</a>`)
         } else {
@@ -53,6 +49,7 @@ app.post('/blogs', (req, res) => {
     });
     res.redirect('/blogs')
 });
+
 
 app.get('*', (req, res) => {
     res.send(`Error 404 : Page Not found. Go back <a href="/">Home</a>`)
