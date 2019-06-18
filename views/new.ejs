@@ -5,18 +5,18 @@
     New Post
     </h2>
 
-    <form class="ui form" action="/camps" method="POST">
+    <form class="ui form" action="/blogs" method="POST">
         <div class="field">
             <label>Title</label>
-            <input type="text" aria-label="Title of Blog post to add" name="title" placeholder="Title" required="required">
+            <input type="text" aria-label="Title of Blog post to add" name="blog[title]" placeholder="Title" required="required">
         </div>
         <div class="field">
             <label>Image URL</label>
-            <input type="text" aria-label="Image URL for blog post" name="image" placeholder="https://www.example.com/image.jpeg">
+            <input type="text" aria-label="Image URL for blog post" name="blog[image]" placeholder="https://www.example.com/image.jpeg">
         </div>
         <div class="field">
             <label>Body</label>
-            <textarea rows="6" aria-label="Body of Blog post to add" name="body" required="required"></textarea>
+            <textarea rows="6" aria-label="Body of Blog post to add" name="blog[body]" required="required"></textarea>
         </div>
         <button class="ui button">Add a blog post</button>
     </form>
