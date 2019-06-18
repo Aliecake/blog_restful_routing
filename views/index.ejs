@@ -4,12 +4,12 @@
     <% blogs.forEach((blog) => { %>
         <div class="ui segment">
             <h2 class="ui left floated header"><%= blog.title %></h2>
-            <div class="ui sub header right floated"><%= blog.created %></div>
+            <div class="ui sub header right floated"><%= blog.created.toDateString() %></div>
             <div class="ui clearing divider"></div>
             <div class="ui items">
                 <div class="item">
-                    <div class="ui thumb image circular">
-                        <img src="<%= blog.image %>" alt="picture of <%= blog.title %>">
+                    <div class="ui image image-container circular">
+                        <img class="object-fit-cover" src="<%= blog.image %>" alt="picture of <%= blog.title %>">
                     </div>
                     <div class="middle aligned content">
                         <div class="header">
