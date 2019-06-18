@@ -1,10 +1,22 @@
 <% include partials/header %>
 
 <div class="ui container main">
-    <h2><%= blog.title %></h2>
-    <%= blog.created %>
-    <img class="ui circular image img" src="<%= blog.image %>" alt="picture of <%= blog.title %>">
-    <p> <%= blog.body %></p>
+    <div class="ui items">
+    <div class="item">
+   
+            <img class="ui rounded image img" src="<%= blog.image %>" alt="picture of <%= blog.title %>">
+    
+        <div class="content">
+            <h2 class="header"><%= blog.title %></h2>
+            <div class="description">
+                <%= blog.body %>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="extra">
+        <%= blog.created %>
+    </div>
 </div>
 
 <% include partials/footer %>
