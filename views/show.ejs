@@ -3,19 +3,17 @@
 <div class="ui container main">
     <div class="ui items">
     <div class="item">
-   
-            <img class="ui rounded image img" src="<%= blog.image %>" alt="picture of <%= blog.title %>">
-    
+        <img class="ui rounded image main-img" src="<%= blog.image %>" alt="picture of <%= blog.title %>">
         <div class="content">
             <h2 class="header"><%= blog.title %></h2>
+            <div class="extra">
+                <%= blog.created.toDateString() %>
+            </div>
             <div class="description">
-                <%= blog.body %>
+                <%- blog.body %>
             </div>
         </div>
     </div>
-    </div>
-    <div class="extra">
-        <%= blog.created %>
     </div>
 </div>
 
