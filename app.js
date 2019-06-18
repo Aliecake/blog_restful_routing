@@ -78,6 +78,7 @@ app.get('/blogs/:id/edit', (req, res) => {
 });
 //update route
 app.put('/blogs/:id', (req, res) => {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
         if(err){
             res.send(`There was an error updating that post, return <a href="/">Home</a>`);
