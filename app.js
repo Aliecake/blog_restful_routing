@@ -12,7 +12,7 @@ mongoose.connect('mongodb://localhost/restful_blog', {useNewUrlParser: true});
 
 const blogSchema = new mongoose.Schema ({
     title: String,
-    image: {type: String, default: 'https://via.placeholder.com/728x90.png?text=Placeholder+Photo'},
+    image: {type: String, default: '/images/350.png'},
     body: String,
     created: {type: Date, default: Date.now}
 });
@@ -22,8 +22,9 @@ const Blog = mongoose.model('Blog', blogSchema);
 
 //index
 app.get('/', (req, res) => {
-    res.redirect('/blogs')
+    res.redirect('/blogs');
 });
+//blog posts
 app.get('/blogs', (req, res) => {
     Blog.find({}, (err, blogs) => {
         if(err){
@@ -33,13 +34,12 @@ app.get('/blogs', (req, res) => {
         }
     });
 });
-//title
+//new route
+app.get('/blogs/new', (req, res) => {
+    res.render('new');
+});
+//create route
 
-//imageurl
-
-//body
-
-//created
 app.listen(3000, () => {
-    console.log('Listening on PORT 3000')
-})
+    console.log('Listening on PORT 3000');
+});
