@@ -46,7 +46,7 @@ app.post('/blogs', (req, res) => {
         body: req.body.blog.body
     }, (err, blog) => {
         if(err){
-            res.send('There was an error posting, go back and try again')
+            res.send(`There was an error posting, return to <a href="/blogs/new">Form</a> or <a href="/">Home</a>`)
         } else {
             console.log("Added a new blog post", blog);
         }
@@ -54,6 +54,9 @@ app.post('/blogs', (req, res) => {
     res.redirect('/blogs')
 });
 
+app.get('*', (req, res) => {
+    res.send(`Error 404 : Page Not found. Go back <a href="/">Home</a>`)
+});
 app.listen(3000, () => {
     console.log('Listening on PORT 3000');
 });
