@@ -4,7 +4,6 @@ const express = require('express'),
     mongoose = require('mongoose');
 
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('view engine', 'ejs');
@@ -42,4 +41,4 @@ app.get('/blogs', (req, res) => {
 //created
 app.listen(3000, () => {
     console.log('Listening on PORT 3000')
-});
+})
