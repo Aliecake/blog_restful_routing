@@ -79,7 +79,7 @@ app.put('/blogs/:id', (req, res) => {
         if(err){
             res.send(`There was an error updating that post, return <a href="/">Home</a>`);
         } else {
-            res.redirect('blogs');
+            res.redirect('/blogs');
         }
     });
 });
