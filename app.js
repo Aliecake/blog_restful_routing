@@ -2,11 +2,13 @@ const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    methodOverride = require('method-override');
+    methodOverride = require('method-override'),
+    expressSanitizer = require('express-sanitizer');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
+app.use(expressSanitizer());
 
 app.set('view engine', 'ejs');
 
@@ -14,7 +16,7 @@ mongoose.connect('mongodb://localhost/restful_blog', {useNewUrlParser: true});
 
 const blogSchema = new mongoose.Schema ({
     title: String,
-    image: {type: String, default: '/images/350.png'},
+    image: String,
     body: String,
     created: {type: Date, default: Date.now}
 });
@@ -42,6 +44,7 @@ app.get('/blogs/new', (req, res) => {
 });
 //create route
 app.post('/blogs', (req, res) => {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.create(req.body.blog, (err, blog) => {
         if(err){
             res.send(`There was an error posting, return to <a href="/blogs/new">Form</a> or <a href="/">Home</a>`)
@@ -85,7 +88,7 @@ app.put('/blogs/:id', (req, res) => {
 });
 //delete route
 app.delete('/blogs/:id', (req, res) => {
-    Blog.findByIdAndRemove(req.params.id, (err, deletedBlog) => {
+    Blog.findByIdAndRemove(req.params.id, (err) => {
         if(err) {
             res.send(`There was an error deleting that post, return <a href="/">Home</a>`);
         } else {
