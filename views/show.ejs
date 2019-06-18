@@ -2,7 +2,9 @@
 
 <div class="ui container main">
     <h2><%= blog.title %></h2>
-    <img src="<%= blog.image %>" alt="picture of <%= blog.title %>">
+    <%= blog.created %>
+    <img class="ui circular image img" src="<%= blog.image %>" alt="picture of <%= blog.title %>">
+    <p> <%= blog.body %></p>
 </div>
 
 <% include partials/footer %>

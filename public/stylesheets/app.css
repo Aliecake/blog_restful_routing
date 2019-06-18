@@ -1,9 +1,20 @@
 body, html {
     font-size: 16px;
 }
+
+.container.main {
+    margin-top: 5.0em;
+}
 i.icon {
     font-size: 2em;
 }
-.container.main {
-    margin-top: 4.0em;
+
+.img {
+    width: 350px;
+    height: 350px;
+}
+
+.thumb {
+    width: 150px;
+    height: 150px;
 }
