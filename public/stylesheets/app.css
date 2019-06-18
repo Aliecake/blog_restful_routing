@@ -1,9 +1,14 @@
 body, html {
     font-size: 16px;
+    height: 100%;
+    margin: 0;
 }
 
 .container.main {
     margin-top: 5.0em;
+}
+.header {
+    padding: 2em;
 }
 i.icon {
     font-size: 2em;
