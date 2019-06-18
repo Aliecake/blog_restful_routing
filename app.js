@@ -49,7 +49,17 @@ app.post('/blogs', (req, res) => {
     });
     res.redirect('/blogs')
 });
-
+//show route
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id, (err, blog) => {
+        if(err){
+            res.send(`There was an error finding that post, return <a href="/">Home</a>`);
+        } else {
+            res.render('show', {blog: blog})
+        }
+    });
+});
 
 app.get('*', (req, res) => {
     res.send(`Error 404 : Page Not found. Go back <a href="/">Home</a>`)

@@ -4,8 +4,8 @@
     <% blogs.forEach((blog) => { %>
         <h1><%= blog.title %></h1>
         <div><%= blog.created %></div>
-        <img src="<%= blog.image %>">
-        <p><%= blog.body %></p>
+        <img src="<%= blog.image %>" alt="picture of <%= blog.title %>">
+        <p><a href="blogs/<%= blog._id %>">REad More</a></p>
     <%});%>
 </div>
 
