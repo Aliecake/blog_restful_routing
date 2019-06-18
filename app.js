@@ -1,10 +1,12 @@
 const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    methodOverride = require('method-override');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 app.set('view engine', 'ejs');
 
@@ -77,7 +79,7 @@ app.put('/blogs/:id', (req, res) => {
         if(err){
             res.send(`There was an error updating that post, return <a href="/">Home</a>`);
         } else {
-            console.log('Blog post updated successfully')
+            res.redirect('blogs');
         }
     });
 });
