@@ -2,10 +2,13 @@
 <div class="ui container main">
     
     <% blogs.forEach((blog) => { %>
-        <h1><%= blog.title %></h1>
-        <div><%= blog.created %></div>
-        <img src="<%= blog.image %>" alt="picture of <%= blog.title %>">
-        <p><a href="blogs/<%= blog._id %>">REad More</a></p>
+        <div class="ui segment">
+            <h2 class="ui left floated header"><%= blog.title %></h2>
+            <div class="ui sub header right floated"><%= blog.created %></div>
+            <div class="ui clearing divider"></div>
+            <img src="<%= blog.image %>" alt="picture of <%= blog.title %>">
+            <p><a href="blogs/<%= blog._id %>"><%= blog.body.substring(0, 25)%>...</a></p>
+        </div>
     <%});%>
 </div>
 
