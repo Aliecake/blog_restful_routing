@@ -60,6 +60,27 @@ app.get('/blogs/:id', (req, res) => {
         }
     });
 });
+//edit route
+app.get('/blogs/:id/edit', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id, (err, blog) => {
+        if(err) {
+            res.send(`There was an error finding that post, return <a href="/">Home</a>`);
+        } else {
+            res.render('edit', {blog: blog})
+        }
+    });
+});
+//update route
+app.put('/blogs/:id', (req, res) => {
+    Blog.update(req.body.blog, (err, blog) => {
+        if(err){
+            res.send(`There was an error updating that post, return <a href="/">Home</a>`);
+        } else {
+            console.log('Blog post updated successfully')
+        }
+    });
+});
 
 app.get('*', (req, res) => {
     res.send(`Error 404 : Page Not found. Go back <a href="/">Home</a>`)
