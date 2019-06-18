@@ -75,11 +75,21 @@ app.get('/blogs/:id/edit', (req, res) => {
 });
 //update route
 app.put('/blogs/:id', (req, res) => {
-    Blog.update(req.body.blog, (err, blog) => {
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
         if(err){
             res.send(`There was an error updating that post, return <a href="/">Home</a>`);
         } else {
-            res.redirect('/blogs');
+            res.redirect(`/blogs/${req.params.id}`);
+        }
+    });
+});
+//delete route
+app.delete('/blogs/:id', (req, res) => {
+    Blog.findByIdAndRemove(req.params.id, (err, deletedBlog) => {
+        if(err) {
+            res.send(`There was an error deleting that post, return <a href="/">Home</a>`);
+        } else {
+            res.redirect(`/blogs`)
         }
     });
 });

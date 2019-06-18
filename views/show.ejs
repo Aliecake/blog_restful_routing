@@ -9,7 +9,9 @@
             <div class="ui mini buttons">
                 <button class="ui small teal button" onclick="window.location.href='<%= blog._id %>/edit'">Edit</button>
                 <div class="or"></div>
-                <button class="ui red button">Delete</button>
+                <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                    <button class="ui red button" >Delete</button>
+                </form>
             </div>
             <div class="extra">
                 <%= blog.created.toDateString() %>
