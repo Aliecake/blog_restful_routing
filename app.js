@@ -52,7 +52,7 @@ app.post('/blogs', (req, res) => {
             console.log("Added a new blog post", blog);
         }
     });
-    res.redirect('/blogs')
+    res.redirect('/blogs');
 });
 //show route
 app.get('/blogs/:id', (req, res) => {
@@ -61,7 +61,7 @@ app.get('/blogs/:id', (req, res) => {
         if(err){
             res.send(`There was an error finding that post, return <a href="/">Home</a>`);
         } else {
-            res.render('show', {blog: blog})
+            res.render('show', {blog: blog});
         }
     });
 });
@@ -72,7 +72,7 @@ app.get('/blogs/:id/edit', (req, res) => {
         if(err) {
             res.send(`There was an error finding that post, return <a href="/">Home</a>`);
         } else {
-            res.render('edit', {blog: blog})
+            res.render('edit', {blog: blog});
         }
     });
 });
@@ -93,7 +93,7 @@ app.delete('/blogs/:id', (req, res) => {
         if(err) {
             res.send(`There was an error deleting that post, return <a href="/">Home</a>`);
         } else {
-            res.redirect(`/blogs`)
+            res.redirect(`/blogs`);
         }
     });
 });
